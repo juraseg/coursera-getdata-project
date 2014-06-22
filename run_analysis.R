@@ -1,3 +1,9 @@
+################################################################
+# Coursera "Getting and Cleaning Data" course project
+################################################################
+
+
+# script assumes data set is in working directory and has name 'dataset.zip'
 # unzip dataset in data dir
 unzip('./dataset.zip')
 
@@ -7,14 +13,12 @@ unzip('./dataset.zip')
 ################################################################
 
 # read feature names
-featureNames <- read.table('./data/UCI HAR Dataset/features.txt')$V2
+featureNames <- read.table('./UCI HAR Dataset/features.txt')$V2
 # remove characters, invalid for R variable and column names: comma ",", parenthesis "()" and dash "-"
-featureNames <- gsub("[(),-+]", '_', featureNames)
+featureNames <- gsub("[(),-]", '_', featureNames)
 
 # read activity names
 activities <- read.table('./UCI HAR Dataset/activity_labels.txt')
-# add acitivity names as 'activity' column to data frame
-data$activity <- activities[data$label, 2]
 
 # read train data
 trainData <- read.table('./UCI HAR Dataset/train/X_train.txt', col.names=featureNames)
@@ -51,6 +55,7 @@ data <- data[, grepl("(mean|std|activity|subject_id)", names(data), ignore.case=
 ################################################################
 
 # melting data so each row contains only one variable
+library(reshape2)
 moltenData <- melt(data, id.vars=c("activity", "subject_id"))
 
 # aggregating data - calculating mean for each variable and putting them back to columns

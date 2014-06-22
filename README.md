@@ -13,6 +13,8 @@ This project was created per instructions in peer assessment assignment in "Gett
 
 ## Desciptions of steps performed
 
+WARNING: Before running script make sure Samsng data is in working directory and has name 'dataset.zip'.
+
 Script firstly unzips all data to current working directory. 
 Then it loads data from "train" and "test" folders (excluding Inertial subfolders) each file into separate variable. Activity label are changed to meaningful names at this time. Then the data is merged, firstly it merges data from each subdirectory (train, test), then merges train and test data. 
 From resulting data frame the script selects only columns containing "mean" or "std" in name (case insensitive), also keeps "activity" and "subject_id" columns. Data frame contains 88 columns (86 features, activity column and subject_id column) and 10299 rows. It is now merged all data and contains only columns we need.
