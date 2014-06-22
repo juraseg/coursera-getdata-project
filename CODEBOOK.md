@@ -143,3 +143,4 @@ Additional vectors obtained by averaging the signals in a signal window sample. 
 * angle_X_gravityMean_
 * angle_Y_gravityMean_
 * angle_Z_gravityMean_
+
